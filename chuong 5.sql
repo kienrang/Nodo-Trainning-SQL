@@ -24,11 +24,10 @@ select e.* from EMP e where e.sal*12 >=36000 or e.job like '%cleck';
 --8. Hi?n th? nh?ng phòng không có nhân viên nào làm vi?c.
 
 select * from dept d where d.deptno  not in (select d.deptno from EMP e,  DEPT d where e.deptno in d.deptno);
-select * from emp e where e.deptno = 40
 
 
---9. Hi?n th? mã nhân viên, tên nhân viên, mã ng??i qu?n lý, tên ng??i qu?n lý
-
+--9. Hi?n th? mã nhân viên, tên nhân viên, mã ng??i qu?n lý, tên ng??i qu?n lý    
+    select e.empno, e.ename, e.mgr from EMP e
 --10. Nh? câu 9 hi?n th? thêm thông tin v? ông KING
 --11. Hi?n th? ngh? nghi?p ???c tuy?n d?ng vào n?m 1981 và không ???c tuy?n d?ng vào
 --n?m 1994.
