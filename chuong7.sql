@@ -1,4 +1,4 @@
---1. T?o b?ng PROJECT v?i cï¿½c column ???c ch? ra d??i ?ï¿½y, PROJID lï¿½ promary key, vï¿½ P_END_DATE > P_START_DATE. 
+--1. T?o b?ng PROJECT v?i các column ???c ch? ra d??i ?ây, PROJID là promary key, và P_END_DATE > P_START_DATE. 
 create Table PROJECT_BEERS(
     PROJID NUMBER(4) primary key,
     P_DESC VARCHAR2(20),
@@ -8,8 +8,8 @@ create Table PROJECT_BEERS(
     MAX_NO_STAFF NUMBER(2),
     check(P_END_DATE > P_START_DATE)
 );
---2. T?o b?ng ASSIGNMENTS v?i cï¿½c column ???c ch? ra d??i ?ï¿½y, ??ng th?i c?t
---PROJID lï¿½ foreign key t?i b?ng PROJECT, c?t EMPNO lï¿½ foreign key t?i b?ng EMP.
+--2. T?o b?ng ASSIGNMENTS v?i các column ???c ch? ra d??i ?ây, ??ng th?i c?t
+--PROJID là foreign key t?i b?ng PROJECT, c?t EMPNO là foreign key t?i b?ng EMP.
     create table ASSIGNMENTS_BEERS (
     PROJID NUMBER(4) NOT NULL,
     EMPNO NUMBER(4) NOT NULL,
@@ -24,22 +24,20 @@ create Table PROJECT_BEERS(
 
 select * from PROJECT_BEERS;
 
---3. Thï¿½m column COMMENTS ki?u LONG vï¿½o b?ng PROJECTS. Thï¿½m column HOURS ki?u
---NUMBER vï¿½o b?ng ASSIGNMENTS.
+--3. Thêm column COMMENTS ki?u LONG vào b?ng PROJECTS. Thêm column HOURS ki?u
+--NUMBER vào b?ng ASSIGNMENTS.
 
     alter table PROJECTS add column COMMENT long;
     alter table ASSIGNMENTS add column HOURS NUMBER;
 
---4. S? d?ng view USER_OBJECTS hi?n th? t?t c? cï¿½c ??i t??ng user s? h?u.
-    DESCRIBE USER_OBJECT;
-
---5. Thï¿½m rï¿½ng bu?c duy nh?t (UNIQUE) cho 2 column PROJECT_ID vï¿½ EMPNO c?a b?ng
+--4. S? d?ng view USER_OBJECTS hi?n th? t?t c? các ??i t??ng user s? h?u.
+--5. Thêm ràng bu?c duy nh?t (UNIQUE) cho 2 column PROJECT_ID và EMPNO c?a b?ng
 --ASSIGNMENTS.
 
     alter table ASSIGNMENTS add Unique (PROJID);
     alter table ASSIGNMENTS add Unique (EMPNO);
---6. Xem cï¿½c thï¿½ng tin v? cï¿½c rï¿½ng bu?c trong USER_CONSTRAINTS.
-        SELECT * FROM USER_CONSTRAINTS
+--6. Xem các thông tin v? các ràng bu?c trong USER_CONSTRAINTS.
+    select * from USER_CONSTRANTS;
+--7. Xem trong USER hi?n t?i có t?t c? bao nhiêu b?ng. 
+    SELECT COUNT(*) FROM DICTIONARY;
 
---7. Xem trong USER hi?n t?i cï¿½ t?t c? bao nhiï¿½u b?ng. 
-SELECT  COUNT(PROJECT_BEERS) COUNT_TABLE FROM DICTIONARY

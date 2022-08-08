@@ -26,12 +26,17 @@ select e.* from EMP e where e.sal*12 >=36000 or e.job like '%cleck';
 select * from dept d where d.deptno  not in (select d.deptno from EMP e,  DEPT d where e.deptno in d.deptno);
 
 
---9. Hi?n th? mã nhân viên, tên nhân viên, mã ng??i qu?n lý, tên ng??i qu?n lý    
-    select e.empno, e.ename, e.mgr from EMP e
+--9. Hi?n th? mã nhân viên, tên nhân viên, mã ng??i qu?n lý, tên ng??i qu?n lý
+    
+select e.empno,e.ename,e.mgr from EMP e where e.mgr in (SELECT EMPNO FROM EMP E WHERE EXISTS (SELECT EMPNO FROM EMP WHERE EMP.MGR = E.EMPNO));
+
+    
+    
 --10. Nh? câu 9 hi?n th? thêm thông tin v? ông KING
 --11. Hi?n th? ngh? nghi?p ???c tuy?n d?ng vào n?m 1981 và không ???c tuy?n d?ng vào
 --n?m 1994.
---12. Tìm nh?ng nhân viên gia nh?p công ty tr??c giám ??c c?a h?. 
+    select  from EMP e
+--12. Tìm nh?ng nhân viên gia nh?p công ty tr??c giám ??c c?a h?.  
 --13. Tìm t?t c? các nhân viên, ngày gia nh?p công ty, tên nhân viên, tên ng??i giám ??c
 --và ngày gia nh?p công ty c?a ng??i giám ??c ?y.
 --14. Tìm nh?ng nhân viên ki?m ???c l??ng cao nh?t trong m?i lo?i ngh? nghi?p
